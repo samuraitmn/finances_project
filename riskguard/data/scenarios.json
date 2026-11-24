@@ -1,0 +1,91 @@
+[
+  {
+    "id": "safe_internal_email",
+    "description": "A short email to an internal colleague",
+    "action": {
+      "action_type": "email"
+    },
+    "expected_decision": "ALLOW"
+  },
+  {
+    "id": "external_email_with_attachment",
+    "description": "An email with an attachment to an external recipient",
+    "action": {
+      "action_type": "email",
+      "external_recipient": true,
+      "attachments": true
+    },
+    "expected_decision": "REVIEW_REQUIRED"
+  },
+  {
+    "id": "approved_external_email",
+    "description": "The human approves a medium-risk external email",
+    "action": {
+      "action_type": "email",
+      "external_recipient": true,
+      "attachments": true
+    },
+    "human_approval": true,
+    "expected_decision": "ALLOW_WITH_APPROVAL"
+  },
+  {
+    "id": "rejected_external_email",
+    "description": "The human rejects a medium-risk external email",
+    "action": {
+      "action_type": "email",
+      "external_recipient": true,
+      "attachments": true
+    },
+    "human_approval": false,
+    "expected_decision": "BLOCKED_BY_HUMAN"
+  },
+  {
+    "id": "small_transfer",
+    "description": "A small transfer to a known recipient",
+    "action": {
+      "action_type": "transfer",
+      "amount": 100
+    },
+    "expected_decision": "ALLOW"
+  },
+  {
+    "id": "medium_external_transfer",
+    "description": "A medium transfer to an external recipient",
+    "action": {
+      "action_type": "transfer",
+      "amount": 1500,
+      "external_recipient": true
+    },
+    "expected_decision": "REVIEW_REQUIRED"
+  },
+  {
+    "id": "large_external_transfer",
+    "description": "A large transfer to an external recipient",
+    "action": {
+      "action_type": "transfer",
+      "amount": 15000,
+      "external_recipient": true,
+      "irreversible": true
+    },
+    "expected_decision": "BLOCKED"
+  },
+  {
+    "id": "recoverable_single_delete",
+    "description": "Delete one recoverable file",
+    "action": {
+      "action_type": "delete"
+    },
+    "expected_decision": "ALLOW"
+  },
+  {
+    "id": "permanent_bulk_delete",
+    "description": "Permanently delete a broad set of data",
+    "action": {
+      "action_type": "delete",
+      "broad_scope": true,
+      "recoverable": false,
+      "irreversible": true
+    },
+    "expected_decision": "BLOCKED"
+  }
+]

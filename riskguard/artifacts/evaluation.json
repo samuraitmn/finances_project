@@ -1,0 +1,142 @@
+{
+  "project": "RiskGuard",
+  "generated_at_utc": "2026-11-24T07:38:07.737806+00:00",
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "pass_rate_percent": 100.0,
+    "decisions": {
+      "ALLOW": 3,
+      "ALLOW_WITH_APPROVAL": 1,
+      "BLOCKED": 2,
+      "BLOCKED_BY_HUMAN": 1,
+      "REVIEW_REQUIRED": 2
+    }
+  },
+  "results": [
+    {
+      "id": "safe_internal_email",
+      "description": "A short email to an internal colleague",
+      "risk_score": 10,
+      "expected_decision": "ALLOW",
+      "actual_decision": "ALLOW",
+      "passed": true,
+      "reasons": [
+        "Base risk for sending an email: +10",
+        "Risk < 30: automatic allow"
+      ]
+    },
+    {
+      "id": "external_email_with_attachment",
+      "description": "An email with an attachment to an external recipient",
+      "risk_score": 40,
+      "expected_decision": "REVIEW_REQUIRED",
+      "actual_decision": "REVIEW_REQUIRED",
+      "passed": true,
+      "reasons": [
+        "Base risk for sending an email: +10",
+        "External recipient: +15",
+        "Email contains attachments: +15",
+        "Risk is 30-69: waiting for human approval"
+      ]
+    },
+    {
+      "id": "approved_external_email",
+      "description": "The human approves a medium-risk external email",
+      "risk_score": 40,
+      "expected_decision": "ALLOW_WITH_APPROVAL",
+      "actual_decision": "ALLOW_WITH_APPROVAL",
+      "passed": true,
+      "reasons": [
+        "Base risk for sending an email: +10",
+        "External recipient: +15",
+        "Email contains attachments: +15",
+        "Human approved the action"
+      ]
+    },
+    {
+      "id": "rejected_external_email",
+      "description": "The human rejects a medium-risk external email",
+      "risk_score": 40,
+      "expected_decision": "BLOCKED_BY_HUMAN",
+      "actual_decision": "BLOCKED_BY_HUMAN",
+      "passed": true,
+      "reasons": [
+        "Base risk for sending an email: +10",
+        "External recipient: +15",
+        "Email contains attachments: +15",
+        "Human rejected the action: blocked"
+      ]
+    },
+    {
+      "id": "small_transfer",
+      "description": "A small transfer to a known recipient",
+      "risk_score": 20,
+      "expected_decision": "ALLOW",
+      "actual_decision": "ALLOW",
+      "passed": true,
+      "reasons": [
+        "Base risk for a money transfer: +20",
+        "Risk < 30: automatic allow"
+      ]
+    },
+    {
+      "id": "medium_external_transfer",
+      "description": "A medium transfer to an external recipient",
+      "risk_score": 60,
+      "expected_decision": "REVIEW_REQUIRED",
+      "actual_decision": "REVIEW_REQUIRED",
+      "passed": true,
+      "reasons": [
+        "Base risk for a money transfer: +20",
+        "Transfer is at least 1,000 units: +20",
+        "Recipient is external: +20",
+        "Risk is 30-69: waiting for human approval"
+      ]
+    },
+    {
+      "id": "large_external_transfer",
+      "description": "A large transfer to an external recipient",
+      "risk_score": 90,
+      "expected_decision": "BLOCKED",
+      "actual_decision": "BLOCKED",
+      "passed": true,
+      "reasons": [
+        "Base risk for a money transfer: +20",
+        "Transfer is at least 1,000 units: +20",
+        "Transfer is at least 10,000 units: +20",
+        "Recipient is external: +20",
+        "Transfer is marked irreversible: +10",
+        "Risk >= 70: automatic block"
+      ]
+    },
+    {
+      "id": "recoverable_single_delete",
+      "description": "Delete one recoverable file",
+      "risk_score": 20,
+      "expected_decision": "ALLOW",
+      "actual_decision": "ALLOW",
+      "passed": true,
+      "reasons": [
+        "Base risk for deleting data: +20",
+        "Risk < 30: automatic allow"
+      ]
+    },
+    {
+      "id": "permanent_bulk_delete",
+      "description": "Permanently delete a broad set of data",
+      "risk_score": 100,
+      "expected_decision": "BLOCKED",
+      "actual_decision": "BLOCKED",
+      "passed": true,
+      "reasons": [
+        "Base risk for deleting data: +20",
+        "Deletion affects a broad scope: +35",
+        "Deleted data cannot be recovered: +30",
+        "Deletion is marked irreversible: +15",
+        "Risk >= 70: automatic block"
+      ]
+    }
+  ]
+}
