@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from riskguard.core import Action, ActionType, Decision, evaluate_action
+from riskguard.core import Action, ActionType, evaluate_action
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SCENARIOS = ROOT / "data" / "scenarios.json"
