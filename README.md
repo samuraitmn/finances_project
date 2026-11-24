@@ -1,1 +1,0 @@
-# finances_project
