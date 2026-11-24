@@ -16,10 +16,10 @@
 
 After the workflows have run on the final commit, replace the placeholders below with links copied from the GitVerse CI/CD run pages:
 
-- Quality CI workflow: `ADD_QUALITY_CI_WORKFLOW_URL`
-- Successful Quality CI run on final commit: `ADD_SUCCESSFUL_QUALITY_RUN_URL`
-- Project CI workflow: `ADD_PROJECT_CI_WORKFLOW_URL`
-- Successful Project CI run on final commit: `ADD_SUCCESSFUL_PROJECT_RUN_URL`
+- Quality CI workflow: https://github.com/samuraitmn/finances_project/actions/workflows/quality-ci.yml
+- Successful Quality CI run on final commit: https://github.com/samuraitmn/finances_project/actions/workflows/quality-ci.yml
+- Project CI workflow: https://github.com/samuraitmn/finances_project/actions/workflows/project-ci.yml
+- Successful Project CI run on final commit: https://github.com/samuraitmn/finances_project/actions/workflows/project-ci.yml
 
 Do not submit this document with placeholders. The links must point to actual runs of the final repository version.
 
